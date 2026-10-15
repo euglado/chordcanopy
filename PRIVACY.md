@@ -1,0 +1,13 @@
+# Privacy / Gizlilik
+
+## Türkçe
+
+Bot, slash komutunda açıkça verdiğiniz akor sembolleri ve seçenekleri işler; mesaj geçmişini, sesleri, dosyaları veya toplu üye listesini almaz. Beş dakikalık en çok 100 RAM taslağı; girdi/sonuç, dil, expiry ve kullanıcı/sunucu/kanal/özel mesaj ID'leri içerir. Taslak paylaşma/vazgeçme sırasında kaldırılır; expiry erişimde veya 30 saniyelik süpürmede temizlenir. Her kapı en çok 100 eşzamanlı ve 1000 cooldown kaydı tutar. REST izin kontrolleri sunucu/roller/kanal ve ilgili kullanıcı/bot üyeliğini geçici işler. Discord.js mesaj/üye önbellekleri kapalıdır; Guilds sunucu/kanal/rol metaverisi süreç boyunca önbellekte kalabilir. Veritabanı, analitik, dış API aktarımı ve içerik logları yoktur. Süreç kapanınca RAM silinir.
+
+Paylaşım girdiyi ve sonucu kanal izleyicilerine gönderir; mesaj kalıcıdır, taslak silinmesiyle geri alınmaz. İçerik için sunucu yetkilisine, Discord tarafındaki veriler için Discord'a başvurun. Özel önizlemeyi yalnızca etkileşimi yapan üye görür; Discord ve bot operatörü veriyi işler. Operatör RAM'e/host'a erişebilir; özel önizleme uçtan uca şifreli değildir. Bot hostu ve Discord ayrı politikalar uygulayabilir. `.env` tokenı sırdır; POSIX 0600 ve Windows klasör izinleri uygun host/yedek seçiminin yerine geçmez. Tokenı, özel kimlikleri veya özel girdileri issue'lara koymayın.
+
+## English
+
+The bot processes explicitly submitted slash-command chord symbols/options, not message history, audio, files or bulk member lists. Up to 100 five-minute RAM drafts hold input/result, language, expiry and user/guild/channel/private-message IDs. Share/discard consumes them; expiry is pruned on access or a 30-second sweep. Each gate holds at most 100 in-flight operations and 1000 cooldown records. REST access checks transiently process guild/roles/channel and the requesting member/bot membership. Message/member caches are disabled; Discord.js may retain guild/channel/role metadata while connected through Guilds. No database, analytics, content logs or transfer to external APIs. Stopping the process clears RAM.
+
+Sharing posts input and output to the channel audience; posts persist and draft deletion does not recall them. Ask server moderators to remove shared content and Discord about Discord-held data. Ephemeral previews are visible to the interacting member, but Discord and the bot host process the data; the host operator can access RAM. They are not end-to-end encryption. Host/Discord retention policies are separate. The `.env` token is a secret; POSIX 0600 and Windows folder permissions do not replace careful host/backup selection. Never put tokens, private IDs or private inputs in issues.

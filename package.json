@@ -1,0 +1,33 @@
+{
+  "name": "chordcanopy",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Preview and share transposed chord symbols in Discord communities",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.13.0 <25"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "register": "node --env-file=.env src/register.ts",
+    "start": "node --env-file=.env src/main.ts",
+    "test": "node --test test/*.test.ts",
+    "lint": "biome check .",
+    "typecheck": "tsc --noEmit",
+    "safety": "node scripts/safety.mjs",
+    "check": "npm run test && npm run lint && npm run typecheck && npm run safety"
+  },
+  "dependencies": {
+    "discord.js": "14.27.0",
+    "discord-api-types": "0.38.56"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@types/node": "24.19.2",
+    "typescript": "7.0.2"
+  },
+  "overrides": {
+    "@types/node": "24.19.2"
+  }
+}
