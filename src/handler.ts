@@ -168,13 +168,13 @@ export function createHandler(
           });
           return;
         }
+        await checkAccess(rest, guildId, i.channelId, i.user.id, botId, true);
         const key = `${guildId}:${i.channelId}`;
         if (!shares.enter(key)) {
           await i.editReply({ content: text[language].busy, components: [] });
           return;
         }
         try {
-          await checkAccess(rest, guildId, i.channelId, i.user.id, botId, true);
           if (draft.expires <= now()) {
             await i.editReply({
               content: text[language].expired,

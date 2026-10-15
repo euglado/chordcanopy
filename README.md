@@ -68,7 +68,7 @@ Geliştirmede açık terminal yeterlidir. Sürekli kullanımda kendi güvendiği
 - **İşlem yapılamadı:** botun Administrator iznini kaldırın; View Channel/Send Messages kanal izinlerini kontrol edin. Yaş kısıtı, slowmode, thread/forum, screening veya timeout varsa normal bir kanal/uygun üye kullanın. Paylaşım ayrıca Manage Server gerektirir. Ağ/API hataları da aynı güvenli mesajı kullanır.
 - **Girdi geçersiz:** kök büyük harf, `#`/`b` ASCII ve desteklenen ek olmalı; akorları boşlukla ayırın. Aralık -11…+11, en çok 24 sembol.
 - **Süre dolmuş/kullanılmış:** yeni komut açın; başka kişinin veya başka mesajın düğmesi kullanılamaz.
-- **İstek sınırı:** 5/60 saniye bekleyin; başarısız paylaşım da bekleme süresini kullanır. Çok yüksek yükte RAM kapasitesi dolarsa yeni önizlemeler reddedilir; süresi dolanları bekleyin.
+- **İstek sınırı:** 5/60 saniye bekleyin; yetki kontrolünü geçmiş başarısız paylaşım da bekleme süresini kullanır. Çok yüksek yükte RAM kapasitesi dolarsa yeni önizlemeler reddedilir; süresi dolanları bekleyin.
 - **Paylaşım doğrulanamadı:** önce kanalı kontrol edin; yeni önizleme açıp tekrar göndermek kopya oluşturabilir.
 - **Bot çevrimdışı:** terminal/host açık mı, bağlantı ve token geçerli mi? Tokenı göstermeden kontrol edin. Aynı tokenla birden çok kopya çalıştırmayın.
 - **Test özel env dosyası uyarısı:** geliştirici kontrollerinden önce özel `.env` dosyasını checkout dışındaki güvenli yere taşıyın; sonra geri koyun. Testler gerçek Discord tokenı istemez.
@@ -149,7 +149,7 @@ An open terminal is enough for development. For continuous use, choose your trus
 - **Cannot continue:** remove bot Administrator; check channel View/Send permissions, age restriction, slowmode, unsupported channel type, screening or timeout. Sharing also needs Manage Server. Network/API failures use the same sanitized message.
 - **Invalid input:** uppercase root, ASCII accidentals, supported suffix, space-separated symbols, shift -11…+11 and at most 24 chords.
 - **Expired/used preview:** run a new command; another user's/message's button cannot authorize a post.
-- **Request limit:** wait 5/60 seconds. Failed share attempts count too; at RAM capacity, wait for previews to expire.
+- **Request limit:** wait 5/60 seconds. Failed authorized share attempts count too; at RAM capacity, wait for previews to expire.
 - **Unconfirmed sharing:** inspect the channel first; creating another preview can otherwise duplicate a delivered post.
 - **Offline bot:** check the terminal/host, internet and token privately. Do not run multiple instances with one token.
 - **Private env warning in checks:** temporarily move private `.env` outside the checkout into a safe location, then restore it afterward. Tests need no Discord token.

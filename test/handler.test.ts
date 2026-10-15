@@ -191,6 +191,30 @@ test("channel cooldown applies across organizers", async () => {
   await handler.handle(button.cast);
   assert.equal(f.posts.length, 1);
 });
+test("unauthorized share cannot reserve a channel cooldown", async () => {
+  const f = fixture();
+  const handler = createHandler(f.rest, guildId, botId);
+  const ordinary = "77777777777777777";
+  f.data[`/guilds/${guildId}/members/${ordinary}`] = {
+    user: { id: ordinary },
+    roles: [],
+    pending: false,
+  };
+  const command = interaction();
+  command.i.user.id = ordinary;
+  await handler.handle(command.cast);
+  const ordinaryId = [...handler.drafts.drafts.keys()][0];
+  assert.ok(ordinaryId);
+  const denied = interaction(`cc:share:${ordinaryId}`);
+  denied.i.user.id = ordinary;
+  await handler.handle(denied.cast);
+  assert.equal(f.posts.length, 0);
+  await handler.handle(interaction().cast);
+  const managerId = [...handler.drafts.drafts.keys()][0];
+  assert.ok(managerId);
+  await handler.handle(interaction(`cc:share:${managerId}`).cast);
+  assert.equal(f.posts.length, 1);
+});
 test("invalid input fails before REST requests", async () => {
   const f = fixture();
   f.rest.get = async () => {
